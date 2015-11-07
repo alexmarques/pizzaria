@@ -1,0 +1,16 @@
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>Nome</th>
+			<th>Pre&ccedil;o</th>
+			<th>Quantidade</th>
+		</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="b in bebida.bebidas.bebidas">
+		<td>{{b.nome}}</td>
+		<td>{{b.preco | currency : "R$ " : 2}}</td>
+		<td><input type="number" ng-model="b.quantidade" min="0"></td>
+	</tr>
+</tbody>
+</table>
