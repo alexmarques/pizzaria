@@ -52,9 +52,21 @@
 								<h4 class="col-sm-offset-2 col-sm-10"><span class="label label-info">Forma de Pagamento</span></h4>
 							</div>
 							<div class="form-group">
-								<div class="col-sm-offset-2 col-sm-1">
-									<input type="radio" class="radio radio-inline" name="tipoPagamento" id="pagamentoDinheiro">
-									<label for="pagamentoDinheiro" class="col-sm-9 control-label">Dinheiro</label>
+								<div class="col-lg-4 col-sm-offset-2">
+									<div class="input-group">
+										<span class="input-group-addon"> 
+											<input type="radio" name="tipoPagamento">
+										</span> 
+										<label class="form-control">Dinheiro</label>
+									</div>
+								</div>
+								<div class="col-lg-4">
+									<div class="input-group">
+										<span class="input-group-addon"> 
+											<input type="radio" name="tipoPagamento">
+										</span> 
+										<label class="form-control">Cartão</label>
+									</div>
 								</div>
 							</div>
 							<div class="form-group pull-right">
