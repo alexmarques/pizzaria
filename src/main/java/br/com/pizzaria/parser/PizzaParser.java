@@ -3,7 +3,9 @@ package br.com.pizzaria.parser;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.pizzaria.dto.Item;
+import org.springframework.beans.BeanUtils;
+
+import br.com.pizzaria.entidades.Item;
 import br.com.pizzaria.entidades.Pizza;
 import br.com.pizzaria.enums.TipoItemEnum;
 
@@ -11,10 +13,8 @@ public class PizzaParser {
 	
 	public static Item fromPizza(Pizza pizza) {
 		Item item = new Item();
+		BeanUtils.copyProperties(pizza, item);
 		item.setTipoItem(TipoItemEnum.PIZZA);
-		item.setId(pizza.getId());
-		item.setNome(pizza.getNome());
-		item.setPreco(pizza.getPreco());
 		return item;
 	}
 	

@@ -14,19 +14,36 @@ app.config(function($routeProvider) {
 			templateUrl: 'js/templates/bebidas.html',
 			controller: 'BebidasController as bebida'
 		})
+		.when('/sobremesas', {
+			templateUrl: 'js/templates/sobremesas.html',
+			controller: 'SobremesasController as sobremesa'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});
 });
 
-app.service('pizzariaService', ['$http', function($http) {
+app.service('pizzariaService', ['$http','$filter','$window', function($http,$filter,$window) {
 	var pizzaria = this;
-	pizzaria.pizzas = [];
-	pizzaria.bebidas = [];
+	pizzaria.itens = [];
 	$http.get('pizzas').success(function(data) {
-		pizzaria.pizzas = data;	
+		angular.forEach(data, function(value, index) {
+			pizzaria.itens.push(value);
+		});
 	});
 	$http.get('bebidas').success(function(data) {
-		pizzaria.bebidas = data;
+		angular.forEach(data, function(value, index) {
+			pizzaria.itens.push(value);
+		});
 	});
+	$http.get('sobremesas').success(function(data) {
+		angular.forEach(data, function(value, index) {
+			pizzaria.itens.push(value);
+		});
+	});
+	pizzaria.finalizarPedido = function() {
+		var pedido = $filter('filter')(pizzaria.itens,{quantidade:'!0'});
+		$http.put('finalizarPedido',angular.toJson(pedido),[]);
+		$window.location.href = 'cliente/cadastro';
+	};
 }]);

@@ -7,10 +7,10 @@
 		</tr>
 	</thead>
 	<tbody>
-	<tr ng-repeat="b in bebida.bebidas.bebidas">
+	<tr ng-repeat="b in bebida.service.itens | filter:{tipoItem:'BEBIDA'}">
 		<td>{{b.nome}}</td>
 		<td>{{b.preco | currency : "R$ " : 2}}</td>
-		<td><input type="number" ng-model="b.quantidade" min="0"></td>
+		<td><input type="number" min="0" ng-model="b.quantidade"></td>
 	</tr>
 </tbody>
 </table>

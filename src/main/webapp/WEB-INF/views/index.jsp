@@ -40,23 +40,19 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr ng-repeat="p in pedido.pedidos.pizzas" ng-if="p.quantidade > 0">
+									<tr ng-repeat="p in pedido.service.itens | filter:{quantidade:'!0'}">
 										<td>{{p.quantidade}}</td>
 										<td>{{p.nome}}</td>
-									</tr>
-									<tr ng-repeat="b in pedido.pedidos.bebidas" ng-if="b.quantidade > 0">
-										<td>{{b.quantidade}}</td>
-										<td>{{b.nome}}</td>
 									</tr>
 								</tbody>
 								<tfoot>
 									<tr>
 										<td>Total</td>
-										<td ng-bind="pedido.totalGeral()"></td>
+										<td>{{totalGeral() | currency : "R$ " : 2}}</td>
 									</tr>
 								</tfoot>
 							</table>
-							<button class="btn btn-primary pull-right">Finalizar Pedido</button>
+							<button class="btn btn-primary pull-right" ng-click="finalizarPedido()">Finalizar Pedido</button>
 						</div>
 					</div>
 				</div>
@@ -65,9 +61,10 @@
 		<script src="js/angular.js" type="text/javascript"></script>
 		<script src="js/angular-route.min.js" type="text/javascript"></script>
 		<script src="js/app.js" type="text/javascript"></script>
-		<script src="js/pizza.js" type="text/javascript"></script>
-		<script src="js/bebidas.js" type="text/javascript"></script>
-		<script src="js/home.js" type="text/javascript"></script>
+		<script src="js/controller/pizza.js" type="text/javascript"></script>
+		<script src="js/controller/bebidas.js" type="text/javascript"></script>
+		<script src="js/controller/sobremesas.js" type="text/javascript"></script>
+		<script src="js/controller/home.js" type="text/javascript"></script>
 		<script src="js/controller/pedido.js" type="text/javascript"></script>
 	</body>
 </html>

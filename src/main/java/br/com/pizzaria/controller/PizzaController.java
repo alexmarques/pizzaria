@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.pizzaria.dao.PizzaDAO;
-import br.com.pizzaria.dto.Item;
+import br.com.pizzaria.entidades.Item;
 import br.com.pizzaria.entidades.Pizza;
 import br.com.pizzaria.parser.PizzaParser;
 
@@ -21,7 +21,7 @@ public class PizzaController {
 	private PizzaDAO dao;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Item> index() {
+	public List<Item> carregarTodas() {
 		return PizzaParser.fromPizzas(dao.carregarTodos(Pizza.class));
 	}
 	

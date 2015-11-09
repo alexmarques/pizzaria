@@ -1,7 +1,16 @@
-<tbody>
-	<tr ng-repeat="d in data">
-		<td>{{d.nome}}</td>
-		<td>{{d.preco | currency : "R$ " : 2}}</td>
-		<td><input type="number" ng-value="{{d.quantidade}}"></td>
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>Nome</th>
+			<th>Pre&ccedil;o</th>
+			<th>Quantidade</th>
+		</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="s in sobremesa.service.itens | filter:{tipoItem:'SOBREMESA'}">
+		<td>{{s.nome}}</td>
+		<td>{{s.preco | currency : "R$ " : 2}}</td>
+		<td><input type="number" min="0" ng-model="s.quantidade"></td>
 	</tr>
 </tbody>
+</table>

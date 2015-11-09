@@ -1,59 +1,44 @@
 package br.com.pizzaria.entidades;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import br.com.pizzaria.enums.FormaDePagamento;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Pedido {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
-	private FormaDePagamento formaDePagamento;
-	private List<Pizza> pizzas;
-	private List<Bebida> bebidas;
-	private List<Sobremesa> sobremesas;
-	
-	public Pedido() {
-		this.pizzas = new ArrayList<Pizza>();
-		this.bebidas = new ArrayList<Bebida>();
-		this.sobremesas = new ArrayList<Sobremesa>();
-	}
-	
-	public long getId() {
+	private Long id;
+	@OneToMany(mappedBy="pedido")
+	private List<Item> itens;
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	private Cliente cliente;
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
-	public List<Pizza> getPizzas() {
-		return pizzas;
-	}	public List<Bebida> getBebidas() {
-		return bebidas;
+	public List<Item> getItens() {
+		return itens;
 	}
-	public List<Sobremesa> getSobremesas() {
-		return sobremesas;
+	public void setItens(List<Item> itens) {
+		this.itens = itens;
 	}
-	public void adicionarPizza(Pizza pizza) {
-		this.getPizzas().add(pizza);
+	public Cliente getCliente() {
+		return cliente;
 	}
-	public void adicionarBebida(Bebida bebida) {
-		this.getBebidas().add(bebida);
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
-	public void adicionarSobremesa(Sobremesa sobremesa) {
-		this.getSobremesas().add(sobremesa);
-	}
-	public void setFormaDePagamento(FormaDePagamento formaDePagamento) {
-		this.formaDePagamento = formaDePagamento;
-	}
-	public FormaDePagamento getFormaDePagamento() {
-		return formaDePagamento;
-	}
+	
+	
 }

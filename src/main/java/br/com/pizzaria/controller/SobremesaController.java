@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.pizzaria.dao.SobremesaDAO;
-import br.com.pizzaria.dto.Item;
+import br.com.pizzaria.entidades.Item;
 import br.com.pizzaria.entidades.Sobremesa;
 import br.com.pizzaria.parser.SobremesaParser;
 

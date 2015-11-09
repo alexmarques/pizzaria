@@ -3,7 +3,7 @@ package br.com.pizzaria.parser;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.pizzaria.dto.Item;
+import br.com.pizzaria.entidades.Item;
 import br.com.pizzaria.entidades.Sobremesa;
 import br.com.pizzaria.enums.TipoItemEnum;
 
