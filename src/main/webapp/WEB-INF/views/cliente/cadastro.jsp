@@ -58,7 +58,6 @@
 											<input type="radio" name="tipoPagamento">
 										</span> 
 										<label class="form-control">Dinheiro</label>
-										
 									</div>
 								</div>
 								<div class="col-lg-4">
