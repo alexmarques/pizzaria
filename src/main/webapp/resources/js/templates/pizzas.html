@@ -7,10 +7,30 @@
 		</tr>
 	</thead>
 	<tbody>
-	<tr ng-repeat="p in pizza.service.itens | filter:{tipoItem:'PIZZA'}">
-		<td>{{p.nome}}</td>
-		<td>{{p.preco | currency : "R$ " : 2}}</td>
-		<td><input type="number" min="0" ng-model="p.quantidade"></td>
-	</tr>
-</tbody>
+		<tr ng-repeat="p in pizza.service.itens | filter:{tipoItem:'PIZZA'}">
+			<td>
+				<div ng-drag="true" ng-drag-data="p" data-allow-transform="true">
+					{{p.nome}}
+				</div>
+			</td>
+			<td>{{p.preco | currency : "R$ " : 2}}</td>
+			<td><input type="number" min="0" ng-model="p.quantidade"></td>
+		</tr>
+	</tbody>
 </table>
+
+<div ng-drop="true" ng-drop-success="onDropComplete($data,$event)" class="panel panel-default">
+	<div class="panel-heading">
+		<p>Arraste no máximo dois sabores para adicionar a pista mista</p>
+		<p class="text-info"><span class="glyphicon glyphicon-info-sign"></span> O valor da pizza mais cara será o valor cobrado!</p>
+	</div>
+    <div class="panel-body">
+	    <div ng-repeat="p in pizza.pizzaMista" ng-drag-success="onDragSuccess($data,$event)" ng-center-anchor="true">
+	        {{p.nome}}
+	    </div>
+    </div>
+    <div class="panel-footer">
+    	<button class="btn btn-primary" ng-click="limparPizzaMista()">Limpar</button>
+    	<button class="btn btn-primary" ng-click="adicionarPizzaMista()">Adicionar</button>
+    </div>
+</div>
