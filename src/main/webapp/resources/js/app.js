@@ -1,4 +1,4 @@
-var app = angular.module('pizzaria',['ngRoute']);
+var app = angular.module('pizzaria',['ngRoute','ngDraggable']);
 
 app.config(function($routeProvider) {
 	$routeProvider
@@ -26,6 +26,7 @@ app.config(function($routeProvider) {
 app.service('pizzariaService', ['$http','$filter','$window', function($http,$filter,$window) {
 	var pizzaria = this;
 	pizzaria.itens = [];
+	pizzaria.mista = [];
 	$http.get('pizzas').success(function(data) {
 		angular.forEach(data, function(value, index) {
 			pizzaria.itens.push(value);
@@ -47,3 +48,4 @@ app.service('pizzariaService', ['$http','$filter','$window', function($http,$fil
 		$window.location.href = 'cliente/cadastro';
 	};
 }]);
+

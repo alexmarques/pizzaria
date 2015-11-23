@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="pizzaria">
+<html lang="pt-BR" ng-app="pizzaria">
 	<head>
 		<meta charset="UTF-8" />
 		<script src="js/jquery-2.1.4.min.js" type="text/javascript"></script>
@@ -52,6 +52,23 @@
 									</tr>
 								</tfoot>
 							</table>
+							<table class="table">
+								<thead>
+									<tr>
+										<th colspan="2">Pizzas Mistas</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Nome</td>
+										<td>Valor</td>
+									</tr>
+									<tr ng-repeat="p in pedido.service.mista">
+										<td>{{p.nome}}</td>
+										<td>{{p.valor | currency : "R$ " : 2}}</td>
+									</tr>
+								</tbody>
+							</table>
 							<button class="btn btn-primary pull-right" ng-click="finalizarPedido()">Finalizar Pedido</button>
 						</div>
 					</div>
@@ -59,6 +76,7 @@
 			</div>
 		</div>
 		<script src="js/angular.js" type="text/javascript"></script>
+		<script src="js/ngDraggable.js" type="text/javascript"></script>
 		<script src="js/angular-route.min.js" type="text/javascript"></script>
 		<script src="js/app.js" type="text/javascript"></script>
 		<script src="js/controller/pizza.js" type="text/javascript"></script>

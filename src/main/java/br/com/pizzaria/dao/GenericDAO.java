@@ -24,6 +24,7 @@ public class GenericDAO<T> {
 		return getSession().get(clazz, id);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<T> carregarTodos(Class<T> clazz) {
 		Criteria criteria = getSession().createCriteria(clazz);
 		return criteria.list();
